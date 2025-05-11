@@ -23,9 +23,7 @@ class NewMessage implements ShouldBroadcast
     public function broadcastWith(): array
     {
         return [
-            'message' => $this->message
-                ->loadMissing('user')
-                ->toArray(),
+            'message' => $this->message->toArray(),
         ];
     }
 

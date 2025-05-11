@@ -10,8 +10,13 @@ import AppLogo from './AppLogo.vue'
 
 const mainNavItems: NavItem[] = [
   {
-    title: 'Chat',
-    href: '/chat',
+    title: 'Chat Inertia',
+    href: route('chat.inertia'),
+    icon: LayoutGrid
+  },
+  {
+    title: 'Chat API',
+    href: route('chat.api'),
     icon: LayoutGrid
   }
 ]
@@ -42,7 +47,7 @@ const footerNavItems: NavItem[] = [
             size="lg"
             as-child
           >
-            <Link :href="route('chat')">
+            <Link :href="route('chat.inertia')">
               <AppLogo />
             </Link>
           </SidebarMenuButton>

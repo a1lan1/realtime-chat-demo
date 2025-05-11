@@ -21,3 +21,17 @@ export interface Message {
     created_at: string;
     updated_at?: string;
 }
+
+export interface ChatForm {
+    content: string;
+    room_id?: number;
+}
+
+export interface ChatState {
+    loading: boolean;
+    storing: boolean;
+    messages: Message[];
+    rooms: Room[];
+    room: Room|null;
+    form: ChatForm;
+}

@@ -31,6 +31,8 @@ readonly class MessageService implements MessageServiceInterface
             )
         );
 
+        $message->load('user');
+
         event(new NewMessage($message));
 
         return $message;
