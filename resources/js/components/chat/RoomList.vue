@@ -1,15 +1,11 @@
 <script setup lang="ts">
-import { router } from '@inertiajs/vue3'
 import type { Room } from '@/types/chat'
 
 defineProps<{
     rooms: Room[]
     activeRoom?: number
 }>()
-
-const navigateToRoom = (roomId: number) => {
-  router.visit(route('chat', { roomId }))
-}
+defineEmits(['showRoom'])
 </script>
 
 <template>
@@ -21,7 +17,7 @@ const navigateToRoom = (roomId: number) => {
       'bg-gray-100 dark:bg-gray-800': activeRoom === room.id,
       'hover:bg-gray-50 dark:hover:bg-gray-900': activeRoom !== room.id
     }"
-    @click="navigateToRoom(room.id)"
+    @click="$emit('showRoom', room.id)"
   >
     <div class="flex justify-between items-center">
       <div>
