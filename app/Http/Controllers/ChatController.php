@@ -18,7 +18,7 @@ class ChatController extends Controller
 
     public function index(?int $roomId = null): Response
     {
-        return Inertia::render('Chat', [
+        return Inertia::render('chat/ChatInertia', [
             'rooms' => $this->roomService->getRooms(),
             'room' => $roomId
                 ? $this->roomService->getRoom($roomId)
