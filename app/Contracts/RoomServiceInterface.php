@@ -10,4 +10,6 @@ interface RoomServiceInterface
     public function getRooms(): Collection;
 
     public function getRoom(int $roomId): Room;
+
+    public function createRoom(array $data): Room;
 }

@@ -20,6 +20,9 @@ Route::prefix('chat')->middleware(['auth', 'verified'])->group(function () {
         Route::get('', fn () => Inertia::render('chat/ChatApi'))->name('chat.api');
         Route::get('rooms', [RoomController::class, 'index'])->name('rooms.index');
         Route::get('rooms/{roomId}', [RoomController::class, 'show'])->name('rooms.show');
+        Route::post('rooms', [RoomController::class, 'store'])->name('rooms.store');
+
+        Route::get('messages/{roomId}', [MessageController::class, 'index'])->name('messages.index');
         Route::post('messages', [MessageController::class, 'store'])->name('messages.store');
     });
 });

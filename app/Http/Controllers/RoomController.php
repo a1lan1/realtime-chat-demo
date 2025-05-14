@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\RoomServiceInterface;
+use App\Http\Requests\Chat\StoreRoomRequest;
 use App\Http\Resources\RoomResource;
 use Illuminate\Http\JsonResponse;
 
@@ -26,5 +27,14 @@ class RoomController extends Controller
                 $this->roomService->getRoom($roomId)
             )
         );
+    }
+
+    public function store(StoreRoomRequest $request): JsonResponse
+    {
+        $message = $this->roomService->createRoom(
+            $request->validated()
+        );
+
+        return response()->json($message, 201);
     }
 }
