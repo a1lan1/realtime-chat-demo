@@ -10,7 +10,8 @@ dev:
 
 test:
 	rm -rf coverage coverage.xml
-	php artisan test --coverage
+	php artisan config:clear --env=testing
+	php artisan test --coverage --parallel
 	open coverage/index.html
 
 lint:
