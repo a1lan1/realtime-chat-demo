@@ -17,8 +17,8 @@ class MessageFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::inRandomOrder()->first()->id ?? User::factory(),
-            'room_id' => Room::inRandomOrder()->first()->id ?? Room::factory(),
+            'user_id' => User::factory(),
+            'room_id' => Room::factory(),
             'content' => fake()->sentence(),
         ];
     }
