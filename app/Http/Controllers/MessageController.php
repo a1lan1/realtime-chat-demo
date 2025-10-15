@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\SendMessageAction;
 use App\Contracts\MessageServiceInterface;
+use App\DTO\MessageData;
 use App\Http\Requests\Chat\StoreMessageRequest;
 use Illuminate\Http\JsonResponse;
 
@@ -17,12 +19,14 @@ class MessageController extends Controller
         );
     }
 
-    public function store(StoreMessageRequest $request): JsonResponse
+    public function store(StoreMessageRequest $request, SendMessageAction $action): JsonResponse
     {
-        $message = $this->messageService->sendMessage(
-            $request->validated('room_id'),
-            $request->user()->id,
-            $request->validated('content'),
+        $message = $action->execute(
+            new MessageData(
+                room_id: $request->validated('room_id'),
+                user_id: $request->user()->id,
+                content: $request->validated('content'),
+            )
         );
 
         return response()->json($message, 201);
