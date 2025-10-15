@@ -11,6 +11,7 @@ use App\Repositories\RoomRepository;
 use App\Services\MessageService;
 use App\Services\RoomService;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Model;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,6 +32,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Model::preventLazyLoading(! $this->app->isProduction());
     }
 }
